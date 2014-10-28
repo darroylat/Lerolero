@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lerolero!</string>
+    <string name="title_activity_maps">Lerolero!</string>
+    <string name="dialog_button_comment_cancel">Cancelar</string>
+    <string name="dialog_button_comment_ok">Enviar</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Opciones</string>
+    <string name="action_refresh">Actualizar</string>
+    <string name="action_logout">Desconectar</string>
+    <!-- Layout de registro y login -->
+    <string name="email">Correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="full_name">Nombre completo</string>
+    <string name="login">Ingresar</string>
+    <string name="register">Registrar</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="welcome_login">Bienvenido a</string>
+    <string name="title_register">Registro</string>
+    <string name="go_register">No tengo cuenta. Me registrare!</string>
+    <string name="go_login">Ya estas registrado. Ingresa aqui!</string>
+    <string name="register_error">A ocurrido un error en el registro</string>
+    <string name="login_error">Correo o contraseña incorrecta</string>
+
+    <string-array name="emotion">
+        <item>@string/negative</item>
+        <item>@string/positive</item>
+    </string-array>
+
+    <string name="negative">Negativo</string>
+    <string name="positive">Positivo</string>
+    <string name="title_activity_comentar">comentar</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_register">Lerolero</string>
+    <string name="title_activity_login">Lerolero</string>
+    <string name="title_activity_inicio">InicioActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_comentarios">ComentariosActivity</string>
+
+</resources>
