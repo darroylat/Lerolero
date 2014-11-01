@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -74,6 +76,14 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
             }
         });
 
+        ImageButton perfil =(ImageButton)findViewById(R.id.ibtn_perfil);
+        perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(MapsActivity.this, InfoActivity.class);
+                startActivity(a);
+            }
+        });
 
     }
 
