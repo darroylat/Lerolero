@@ -65,14 +65,15 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
                 Double lat = bn.getLatitude();
                 Double lng = bn.getLongitude();
 
-                Intent i = new Intent(MapsActivity.this, ComentarActivity.class);
-                i.putExtra("id",markerid);
-                i.putExtra("titulo",markerTitulo);
-                i.putExtra("subtitulo",markerSubtitulo);
+                Intent i = new Intent(MapsActivity.this, ComentariosActivity.class);
+                i.putExtra("idsucursal",markerid);
+                i.putExtra("nombre",markerTitulo);
+                i.putExtra("direccion",markerSubtitulo);
                 i.putExtra("lat",lat);
                 i.putExtra("lng",lng);
                 startActivity(i);
-                return false;
+
+                return true;
             }
         });
 
@@ -179,13 +180,11 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(location != null && location.getTime() > Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000) {
-            // Do something with the recent location fix
-            //  otherwise wait for the update below
-            Toast.makeText(this, "Calculo", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Calculo", Toast.LENGTH_LONG).show();
             setMarker(location);
         }else{
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-            Toast.makeText(this,"Ubicacion", Toast.LENGTH_LONG ).show();
+            //Toast.makeText(this,"Ubicacion", Toast.LENGTH_LONG ).show();
             getLocation();
         }
         return location;
@@ -201,7 +200,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
                 .title("Aqui Estas!!")
                 .icon(BitmapDescriptorFactory.defaultMarker()));
         */
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(coordenadas, 15);
         mMap.animateCamera(cameraUpdate);
     }
 

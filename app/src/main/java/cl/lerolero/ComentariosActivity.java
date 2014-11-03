@@ -1,11 +1,15 @@
 package cl.lerolero;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,9 +31,11 @@ public class ComentariosActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Bundle datos = this.getIntent().getExtras();
-        String idsucursal = datos.getString("sucursal");
-        String nombre_establecimiento = datos.getString("nombre");
-        String direccion_sucursal = datos.getString("direccion");
+        final String idsucursal = datos.getString("idsucursal");
+        final String nombre_establecimiento = datos.getString("nombre");
+        final String direccion_sucursal = datos.getString("direccion");
+        final Double lat = datos.getDouble("lat");
+        final Double lng = datos.getDouble("lng");
 
         TextView txtNombre = (TextView)findViewById(R.id.nombre_establecimiento);
         TextView txtDireccion = (TextView)findViewById(R.id.direccion_sucursal);
@@ -73,11 +79,19 @@ public class ComentariosActivity extends Activity {
             e.printStackTrace();
         }
 
-
-
-
-
-
+        ImageButton comentar = (ImageButton)findViewById(R.id.ibtn_comentar);
+        comentar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ComentariosActivity.this, ComentarActivity.class);
+                i.putExtra("idsucursal",idsucursal);
+                i.putExtra("nombre",nombre_establecimiento);
+                i.putExtra("direccion",direccion_sucursal);
+                i.putExtra("lat",lat);
+                i.putExtra("lng",lng);
+                startActivity(i);
+            }
+        });
 
     }
     @Override

@@ -25,6 +25,7 @@ import cl.lerolero.libreria.UserFunctions;
 
 public class ComentarActivity extends Activity {
     long idemotion;
+    UserFunctions userFunctions = new UserFunctions();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +36,13 @@ public class ComentarActivity extends Activity {
 
 
         Bundle datos = this.getIntent().getExtras();
-        final String id = datos.getString("id");
-        final String nombre = datos.getString("titulo");
-        final String direccion = datos.getString("subtitulo");
+        final String id = datos.getString("idsucursal");
+        final String nombre = datos.getString("nombre");
+        final String direccion = datos.getString("direccion");
         final Double lat = datos.getDouble("lat");
         final Double lng = datos.getDouble("lng");
-        /*
-        TextView comentario = (TextView)findViewById(R.id.txtComment);
-        comentario.setText(id+"= "+lat+","+lng);
-        */
+
+
         TextView nombreBanco = (TextView)findViewById(R.id.txtTitulo);
         TextView direccionBanco = (TextView)findViewById(R.id.txtDireccion);
 
@@ -66,7 +65,7 @@ public class ComentarActivity extends Activity {
                 EditText txtComment = (EditText)findViewById(R.id.txtComment);
 
                 String commnet = txtComment.getText().toString();
-                String email = getEmail();
+                String email = userFunctions.getUserLoggedIn(getApplicationContext());
                 String emotion = String.valueOf(idemotion);
                 String latitude = String.valueOf(lat);
                 String longitude = String.valueOf(lng);
@@ -89,26 +88,8 @@ public class ComentarActivity extends Activity {
                 finish();
             }
         });
-        Button btnViewComment = (Button)findViewById(R.id.btnViewComment);
-        btnViewComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ComentarActivity.this, ComentariosActivity.class);
-                i.putExtra("sucursal",id);
-                i.putExtra("nombre", nombre);
-                i.putExtra("direccion", direccion);
-                startActivity(i);
-            }
-        });
+
     }
-
-    public String getEmail(){
-        UserFunctions userF = new UserFunctions();
-        String email = userF.getUserLoggedIn(getApplicationContext());
-        return email;
-    }
-
-
 
 
 }

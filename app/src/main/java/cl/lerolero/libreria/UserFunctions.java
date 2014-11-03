@@ -24,6 +24,7 @@ public class UserFunctions {
     private static String comment_tag = "comment";
     private static String getcomment_tag = "getcomment";
     private static String getbanks_tag = "getbanks";
+    private static String getinfo_tag = "getinfo";
 
     // constructor
     public UserFunctions(){
@@ -92,6 +93,15 @@ public class UserFunctions {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag",getcomment_tag));
         params.add(new BasicNameValuePair("sucursal",sucursal));
+
+        JSONObject json = jsonParser.getJSONFromUrl(getcommentURL, params);
+
+        return json;
+    }
+    public JSONObject getInfo(String user){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag",getinfo_tag));
+        params.add(new BasicNameValuePair("email",user));
 
         JSONObject json = jsonParser.getJSONFromUrl(getcommentURL, params);
 

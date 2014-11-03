@@ -90,11 +90,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp" />
     </LinearLayout>
-    <Button
-        android:id="@+id/btnViewComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver Comentarios" />
+
     <TextView
         android:id="@+id/bankid"
         android:layout_width="wrap_content"
