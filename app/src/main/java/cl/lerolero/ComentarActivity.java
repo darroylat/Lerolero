@@ -1,13 +1,8 @@
 package cl.lerolero;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -73,9 +67,9 @@ public class ComentarActivity extends Activity {
 
                 UserFunctions userFunction = new UserFunctions();
                 JSONObject json = userFunction.registerComment(commnet, email, emotion, latitude, longitude, sucursal);
-                Log.e("JSON", commnet.toString());
-                Log.e("JSON", email.toString());
-                Log.e("JSON", emotion.toString());
+                //Log.e("JSON", commnet.toString());
+                //Log.e("JSON", email.toString());
+                //Log.e("JSON", emotion.toString());
                 //Log.e("JSON", latitude.toString());
                 //Log.e("JSON", longitude.toString());
                 finish();

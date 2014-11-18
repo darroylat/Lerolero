@@ -6,15 +6,14 @@ import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -147,6 +146,8 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
                 String direction  = jsonBancoObject.getString("sucursaladress");
                 String latitude  = jsonBancoObject.getString("sucursallatitude");
                 String longitude  = jsonBancoObject.getString("sucursallongitude");
+
+                String establecimiento = jsonBancoObject.getString("establecimientoid");
                 //No utilizable//setLocationBanks(Integer.parseInt(id), name, direction, Double.valueOf(latitude).doubleValue(), Double.valueOf(longitude).doubleValue());
                 Log.i("Json", String.valueOf(jsonBancoObject));
 
@@ -159,7 +160,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
                         .position(coordinate)
                         .title(name)
                         .snippet(direction)
-                        .icon(BitmapDescriptorFactory.defaultMarker()));
+                        .icon(BitmapDescriptorFactory.fromResource(userFunction.getLogoEstablecimiento(establecimiento))));
 
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("idbank", String.valueOf(bankid));

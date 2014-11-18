@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import cl.lerolero.R;
+
 public class UserFunctions {
 
     private JSONParser jsonParser;
@@ -25,6 +27,9 @@ public class UserFunctions {
     private static String getcomment_tag = "getcomment";
     private static String getbanks_tag = "getbanks";
     private static String getinfo_tag = "getinfo";
+    private static String like_tag = "like";
+    private static String newPass_tag = "cambio";
+
 
     // constructor
     public UserFunctions(){
@@ -107,7 +112,27 @@ public class UserFunctions {
 
         return json;
     }
+    public JSONObject setLike (String comentario, String usuario){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag",like_tag));
+        params.add(new BasicNameValuePair("comentario",comentario));
+        params.add(new BasicNameValuePair("usuario",usuario));
 
+        JSONObject json = jsonParser.getJSONFromUrl(getcommentURL, params);
+
+        return json;
+    }
+
+    public JSONObject setNewPassword (String email, String password){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag",newPass_tag));
+        params.add(new BasicNameValuePair("email", email));
+        params.add(new BasicNameValuePair("password", password));
+
+        JSONObject json = jsonParser.getJSONFromUrl(getcommentURL, params);
+
+        return json;
+    }
     /**
      * Function get Login status
      * */
@@ -131,6 +156,33 @@ public class UserFunctions {
         return email;
 
     }
+
+
+
+    public Integer getLogoEstablecimiento(String id){
+        int establecimiento = Integer.valueOf(id);
+        switch (establecimiento){
+            case 1:
+                return R.drawable.bancoestado;
+            case 2:
+                return R.drawable.bancochile;
+            case 3:
+                return R.drawable.bancoitau;
+            case 4:
+                return R.drawable.santander;
+            case 5:
+                return R.drawable.scotiabank;
+            case 6:
+                return R.drawable.inacap;
+            case 7:
+                return R.drawable.andresbello;
+            default:
+                return R.drawable.map_marker;
+        }
+
+
+    }
+
 
 
 

@@ -6,26 +6,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import cl.lerolero.libreria.UserFunctions;
 
 /**
  * Created by Daniel on 29-10-2014.
  */
 public class AdapterComentario extends BaseAdapter {
 
+    Comentario comentario;
+    UserFunctions userFunctions;
+    ComentariosActivity comActivity;
+
     protected Activity activity;
     protected ArrayList<Comentario> items;
+    private Context context;
 
     public AdapterComentario(Activity activity, ArrayList<Comentario> items){
         this.activity = activity;
         this.items = items;
     }
-
+    public AdapterComentario(Context c){
+        this.context = c;
+    }
 
     @Override
     public int getCount() {
@@ -43,13 +52,33 @@ public class AdapterComentario extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
+
+
 
         if(convertView == null){
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.item_listview, null);
         }
+        final Comentario dataModel = items.get(position);
+
+        final ImageButton btnlike = (ImageButton)v.findViewById(R.id.btnLike);
+        btnlike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                //btnlike.setText(dataModel.getIdc());
+
+                //JSONObject json = userFunctions.setLike(dataModel.getIdc(),userFunctions.getUserLoggedIn(activity.getApplication()));
+                Toast.makeText(activity,"Your Message "+ dataModel.getIdc(), Toast.LENGTH_SHORT).show();
+
+            }
+
+
+        });
+
         Comentario dir = items.get(position);
 
         ImageView foto = (ImageView)v.findViewById(R.id.imagen_usuario);
@@ -66,7 +95,11 @@ public class AdapterComentario extends BaseAdapter {
 
         TextView like = (TextView)v.findViewById(R.id.like_usuario);
         like.setText(dir.getLike());
+        TextView idc = (TextView)v.findViewById(R.id.id_comentario);
+        idc.setText(dir.getIdc());
 
         return v;
+
+
     }
 }

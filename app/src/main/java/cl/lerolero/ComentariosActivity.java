@@ -3,11 +3,8 @@ package cl.lerolero;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -22,8 +19,11 @@ import cl.lerolero.libreria.UserFunctions;
 
 public class ComentariosActivity extends Activity {
     UserFunctions userFunctions;
+    Comentario comentario;
 
-    @Override
+    //public String usuario = userFunctions.getUserLoggedIn(ComentariosActivity.this);
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comentarios);
@@ -46,7 +46,7 @@ public class ComentariosActivity extends Activity {
 
         ArrayList<Comentario> miColeccion = new ArrayList<Comentario>();
         userFunctions = new UserFunctions();
-        Comentario comentario;
+
         AdapterComentario adapter = null;
         JSONObject json = userFunctions.getComments(idsucursal);
 
@@ -66,7 +66,7 @@ public class ComentariosActivity extends Activity {
                 String nombre = jsonDatos.getString("infonombre");
                 String infonivel = jsonDatos.getString("infopuntosnivel");
 
-                comentario = new Comentario(getResources().getDrawable(R.drawable.ic_launcher),nombre, created, comment, "43");
+                comentario = new Comentario(getResources().getDrawable(R.drawable.ic_launcher),nombre, created, comment, "43", id);
                 miColeccion.add(comentario);
                 Log.i("Json", String.valueOf(jsonDatos));
                 Log.i("Json1", String.valueOf(json));
@@ -92,6 +92,8 @@ public class ComentariosActivity extends Activity {
                 startActivity(i);
             }
         });
+
+
 
     }
     @Override

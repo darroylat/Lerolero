@@ -40,8 +40,9 @@
 
     <ImageButton
         android:id="@+id/ibtn_comentar"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/btn_nuevo_comentario"
         android:layout_width="wrap_content"
+       android:background="@null"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>

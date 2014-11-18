@@ -4,7 +4,7 @@
     <string name="app_name">Lerolero!</string>
     <string name="title_activity_maps">Lerolero!</string>
     <string name="dialog_button_comment_cancel">Cancelar</string>
-    <string name="dialog_button_comment_ok">Enviar</string>
+    <string name="dialog_button_comment_ok">Agregar</string>
 
     <!-- Menu -->
     <string name="action_settings">Opciones</string>

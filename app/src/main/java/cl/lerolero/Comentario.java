@@ -11,23 +11,26 @@ public class Comentario {
     protected String fecha;
     protected String comentario;
     protected String like;
+    protected String idc;
     protected int id;
 
-    public Comentario(Drawable foto, String nombre, String fecha, String comentario, String like){
+    public Comentario(Drawable foto, String nombre, String fecha, String comentario, String like, String idc){
         super();
         this.foto = foto;
         this.nombre = nombre;
         this.fecha = fecha;
         this.comentario = comentario;
         this.like = like;
+        this.idc = idc;
     }
-    public Comentario(Drawable foto, String nombre, String fecha, String comentario, String like, int id){
+    public Comentario(Drawable foto, String nombre, String fecha, String comentario, String like, String idc, int id){
         super();
         this.foto = foto;
         this.nombre = nombre;
         this.fecha = fecha;
         this.comentario = comentario;
         this.like = like;
+        this.idc = idc;
         this.id = id;
     }
     public Drawable getFoto(){
@@ -60,10 +63,17 @@ public class Comentario {
     public void setLike(String like){
         this.like = like;
     }
+    public String getIdc(){
+        return idc;
+    }
+    public void setIdc(String idc){
+        this.idc = idc;
+    }
     public int getId(){
         return id;
     }
     public void setId(int id){
         this.id = id;
     }
+
 }

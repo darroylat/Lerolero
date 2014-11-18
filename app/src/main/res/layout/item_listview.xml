@@ -59,11 +59,12 @@
            android:layout_alignParentRight="true"
            android:layout_alignParentEnd="true"
            android:id="@+id/relativeLayout">
-           <Button
+           <ImageButton
                android:id="@+id/btnLike"
-               android:text="+"
                android:layout_width="50dp"
                android:layout_height="50dp"
+               android:background="@null"
+               android:src="@drawable/btn_me_gusta"
                android:layout_marginTop="16dp"
                />
            <TextView
@@ -72,8 +73,15 @@
                android:textSize="8dp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginLeft="24dp"
-               android:layout_marginTop="52dp"/>
+               android:layout_marginLeft="27dp"
+               android:layout_marginTop="50dp"/>
+           <TextView
+               android:id="@+id/id_comentario"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="a"
+               android:layout_marginTop="18dp"
+               />
         </RelativeLayout>
 
    </RelativeLayout>
