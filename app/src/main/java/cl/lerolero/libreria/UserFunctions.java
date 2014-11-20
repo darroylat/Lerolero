@@ -180,7 +180,6 @@ public class UserFunctions {
                 return R.drawable.map_marker;
         }
 
-
     }
 
 

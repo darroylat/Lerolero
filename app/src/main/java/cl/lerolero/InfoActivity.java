@@ -2,12 +2,16 @@ package cl.lerolero;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,6 +30,8 @@ public class InfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button btnCambiar = (Button)findViewById(R.id.info_cambiar_pass);
         btnCambiar.setOnClickListener(new View.OnClickListener() {
@@ -51,33 +57,46 @@ public class InfoActivity extends Activity {
 
                 TextView nivel = (TextView)findViewById(R.id.info_nivel);
                 ProgressBar progreso = (ProgressBar)findViewById(R.id.progreso);
+                ImageView foto = (ImageView)findViewById(R.id.ibtn_fotoperfil);
 
-                if(infopuntos <= 1000){
+                if(infopuntos <= 500){
                     // 0 a 1000 nivel 1
-                    porcentaje = infopuntos * 100 / 1000;
+                    porcentaje = infopuntos * 100 / 500;
                     nivel.setText("Nivel 1");
                     progreso.setProgress(porcentaje);
-                }else if(infopuntos > 1000 && infopuntos <= 2500){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_1);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 500 && infopuntos <= 1200){
                     // 1001 a 2500 nivel 2
-                    menos = 1000;
+                    menos = 500;
                     nuevo = infopuntos - menos;
-                    porcentaje = nuevo * 100/1500;
+                    porcentaje = nuevo * 100/700;
                     nivel.setText("Nivel 2");
                     progreso.setProgress(porcentaje);
-                }else if(infopuntos > 2500 && infopuntos <= 4500){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_2);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 1200 && infopuntos <= 2100){
                     // 2501 a 4500 nivel 3
-                    menos = 2500;
+                    menos = 1200;
                     nuevo = infopuntos - menos;
-                    porcentaje = nuevo * 100/2000;
+                    porcentaje = nuevo * 100/900;
                     nivel.setText("Nivel 3");
                     progreso.setProgress(porcentaje);
-                }else if(infopuntos > 4500){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_3);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 2100 && infopuntos <= 3200){
                     // 4501 a 7000 nivel 4
-                    menos = 4500;
+                    menos = 2100;
                     nuevo = infopuntos - menos;
-                    porcentaje = nuevo * 100/1000;
+                    porcentaje = nuevo * 100/1100;
                     nivel.setText("Nivel 4");
                     progreso.setProgress(porcentaje);
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_4);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 3200){
+                    nivel.setText("Nivel 5");
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_5);
+                    foto.setImageBitmap(bmp);
                 }
             }
         }catch (Exception e){
@@ -141,10 +160,11 @@ public class InfoActivity extends Activity {
         dialog.show();
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.info, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 

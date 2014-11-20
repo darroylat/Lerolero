@@ -13,8 +13,9 @@
 
     <ImageButton
         android:id="@+id/ibtn_perfil"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/nivel_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:layout_alignParentRight="true"/>
 </RelativeLayout>

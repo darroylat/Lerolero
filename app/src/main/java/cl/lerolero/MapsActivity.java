@@ -3,6 +3,8 @@ package cl.lerolero;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -50,6 +52,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
 
         setUpMapIfNeeded();
 
+
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -76,6 +79,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
             }
         });
 
+
         ImageButton perfil =(ImageButton)findViewById(R.id.ibtn_perfil);
         perfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +95,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
+
     }
 
     /**
@@ -117,6 +122,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
+
             }
         }
     }
@@ -169,7 +175,9 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
 
                 extraMarkerInfo.put(sucursales.getId(),data);
 
+
             }
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -189,12 +197,18 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
             getLocation();
         }
         return location;
+
     }
 
     public void setMarker(Location location){
         double latitud = location.getLatitude();
         double longitud = location.getLongitude();
         LatLng coordenadas = new LatLng(latitud,longitud);
+
+       /*************************/
+
+
+
         /*
         Marker ubicacion = mMap.addMarker(new MarkerOptions()
                 .position(cordenadas)
@@ -203,6 +217,39 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
         */
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(coordenadas, 15);
         mMap.animateCamera(cameraUpdate);
+    }
+
+    public void getLogoNivel(){
+        String email = userFunctions.getUserLoggedIn(getBaseContext());
+        JSONObject json = userFunctions.getInfo(email);
+        try{
+            JSONArray jArray = json.optJSONArray("informacion");
+            for(int i = 0;i < jArray.length(); i++){
+                JSONObject jsonDatos = jArray.getJSONObject(i);
+                Integer infopuntos = jsonDatos.getInt("infopuntosnivel");
+
+                ImageButton foto = (ImageButton)findViewById(R.id.ibtn_perfil);
+
+                if(infopuntos <= 500){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_1);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 500 && infopuntos <= 1200){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_2);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 1200 && infopuntos <= 2100){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_3);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 2100 && infopuntos <= 3200){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_4);
+                    foto.setImageBitmap(bmp);
+                }else if(infopuntos > 3200){
+                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.nivel_5);
+                    foto.setImageBitmap(bmp);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -221,13 +268,6 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;
-            case R.id.action_refresh:
-
-                //getComments("-12");
-                getSucursales();
-
-
-                return true;
             case R.id.action_loguot:
                 userFunctions = new UserFunctions();
                 userFunctions.logoutUser(getApplicationContext());
@@ -236,8 +276,7 @@ public class MapsActivity extends FragmentActivity implements LocationListener {
                 startActivity(login);
                 // Closing dashboard screen
                 finish();
-            case R.id.action_location:
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
