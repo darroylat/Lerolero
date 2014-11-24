@@ -40,5 +40,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_comentarios">ComentariosActivity</string>
     <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
 
 </resources>

@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cl.lerolero.PrincipalActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/ibtn_bancochile"
+                android:src="@drawable/banner_bancochile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#001c4c"/>
+            <ImageButton
+                android:id="@+id/ibtn_bancoestado"
+                android:src="@drawable/banner_bancoestado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"/>
+            <ImageButton
+                android:id="@+id/ibtn_santander"
+                android:src="@drawable/banner_santander"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fe0000"/>
+            <ImageButton
+                android:id="@+id/ibtn_bancoparis"
+                android:src="@drawable/banner_bancoparis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#6dbbfb"/>
+            <ImageButton
+                android:id="@+id/ibtn_scotiabank"
+                android:src="@drawable/banner_scotiabank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ef2a24"/>
+            <ImageButton
+                android:id="@+id/ibtn_bancofalabella"
+                android:src="@drawable/banner_bancofalabella"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"/>
+            <ImageButton
+                android:id="@+id/ibtn_bbva"
+                android:src="@drawable/banner_bbva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1c5ba2"/>
+            <ImageButton
+                android:id="@+id/ibtn_bci"
+                android:src="@drawable/banner_bci"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"/>
+            <ImageButton
+                android:id="@+id/ibtn_bancoitau"
+                android:src="@drawable/banner_bancoitau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0046e6"/>
+            <ImageButton
+                android:id="@+id/ibtn_mostrar"
+                android:src="@drawable/banner_mostrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFCA28"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
